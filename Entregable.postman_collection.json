@@ -1,0 +1,114 @@
+{
+	"info": {
+		"_postman_id": "7388d122-6960-496c-869f-2e7a407a9674",
+		"name": "Entregable",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13558089"
+	},
+	"item": [
+		{
+			"name": "Listar perros por raza y nombre_dueño",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/home/PerroRazaDueno/Dalmatian,Juan Perez",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"home",
+						"PerroRazaDueno",
+						"Dalmatian,Juan Perez"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar perros por raza y el promedio de peso",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/home/Promedio/Dalmatian",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"home",
+						"Promedio",
+						"Dalmatian"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listar info de campeonato por id y los datos del perro",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/home/InfoCampeon/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"home",
+						"InfoCampeon",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar razas acreditadas y los premios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/home/acreditado/-",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"home",
+						"acreditado",
+						"-"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar perros pesados",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/home/peso",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"home",
+						"peso"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

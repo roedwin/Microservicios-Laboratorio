@@ -85,11 +85,8 @@ router.get("/peso/", async(req, res)=>{
   perros = perros.json.filter(perro => arr2.some(p => perro.peso == p));
   const razasPerros = perros.map(p => p.raza);
   const idsPerro = perros.map(p => p.Id);
-
   const raza = await fetch(`http://razas:5000/api/razas/raza/${razasPerros.join(",")}`).then(response => response.json());
-
   const campeonatos = await fetch(`http://campeonatos:3000/api/campeonatos/idCampeon/${idsPerro.join(",")}`).then(response => response.json());
-
   const puntajes = campeonatos.campeonatos.map(c => {
     return{
       Puntajes: c.puntaje,
