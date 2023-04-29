@@ -24,5 +24,27 @@ router.get("/", async (req, res) => {
     });
 });
 
+router.get("/raza/:razas", async(req, res) => {
+  const reqRazas = req.params.razas.split(",");
+  const razas = await fetch("http://razas:5000/api/razas/").then(response => response.json());
+
+  const raza = razas.razas.filter(raza => reqRazas.some(r => raza.raza.includes(r)));
+  const response = {
+    raza
+  }
+  res.send(response);
+})
+
+router.get("/acreditado/:acreditado", async(req, res) => {
+  const reqAcreditado = req.params.acreditado;
+  const razas = await fetch("http://razas:5000/api/razas/").then(response => response.json());
+
+  const raza = razas.razas.filter(raza => raza.acreditado === reqAcreditado);
+  const response = {
+    raza
+  }
+  res.send(response);
+})
+
 
 module.exports = router;

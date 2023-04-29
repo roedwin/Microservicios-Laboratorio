@@ -26,6 +26,18 @@ router.get("/:id", async(req, res)=>{
     res.send(response);
 })
 
+router.get("/idCampeon/:id", async(req, res)=>{
+    const reqId = req.params.id.split(",");
+    let campeonatos = await Campeonatos.findAll();
+    campeonatos = campeonatos.filter(campeonato => reqId.includes(String(campeonato.id_campeon)));
+    const response = {
+        "Numero de registros": campeonatos.length,
+        "Total entregado en premios": campeonatos.premio,
+        campeonatos
+    }
+    res.send(response);
+})
+
 //EJEMPLO CON TABLA USERS
 /*
 router.get('/users', async(req, res)=>{
