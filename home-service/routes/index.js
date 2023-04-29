@@ -22,13 +22,35 @@ router.get("/PerroRazaDueno/:RazaDueno", async(req, res)=>{
   const [raza, dueno] = req.params.RazaDueno.split(",");
   let perros = await fetch("http://perros:4000/api/perros/").then(response => response.json());
   perros = perros.json.filter(perro => perro.raza === raza);
-  let arregloDuenos = perros.map(perro => perro.nombre_dueno);
-  arregloDuenos = arregloDuenos.map(a => a !== null)
+  perros = perros.filter(perro => perro.nombre_dueno === dueno);
   const response = {
-    arregloDuenos
+    perros
+  };
+  return res.send(response);
+});
+
+router.get("/Promedio/:raza", async(req, res) => {
+  let perros = await fetch("http://perros:4000/api/perros/").then(response => response.json());
+  perros = perros.json.filter(perro => perro.raza === req.params.raza);
+  const sumaPeso = perros.reduce((acc, perro) => acc + perro.peso, 0);
+  const totalPerros = perros.length;
+
+  const response = {
+    "Promedio total del peso de perros": sumaPeso/totalPerros,
+    perros
+  };
+  return res.send(response);
+});
+
+router.get("/InfoCampeon/:id", async(req, res) =>{
+  let perros = await fetch("http://perros:4000/api/perros/").then(response => response.json());
+  let campeonatos = await fetch(`http://campeonatos:3000/api/campeonatos/${req.params.id}`).then(response => response.json());
+
+
+  const response = {
+    campeonatos
   };
   return res.send(response);
 })
-
 
 module.exports = router; 
